@@ -17,14 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/map', function () {
-
-	$collection = collect(['taylor', 'abigail', 'ag ko'])->map(function ($name) {
-    return strtoupper($name);
-		});
-
-	return $collection;
-
-
-});
+require __DIR__.'/auth.php';
